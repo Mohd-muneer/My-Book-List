@@ -80,11 +80,14 @@ class Book {
       // console.log(book.title +" "+ typeof book.isbn+" "+typeof isbn);
       if(book.isbn == isbn) {
         // console.log(book.title);
+        console.log('entering edit book fun');
         document.getElementById('title').value=book.title;
         document.getElementById('author').value=book.author;
         document.getElementById('isbn').value=book.isbn;
       }
     });
+    
+    
   }
   // Store Class: Handles Storage....................................................
   class Store {
@@ -104,6 +107,7 @@ class Book {
       const books = Store.getBooks();
       books.push(book);
       localStorage.setItem('books', JSON.stringify(books));
+      console.log('entering add book fun');
     }
 
     static editBook(editData) {
@@ -117,6 +121,9 @@ class Book {
           books.splice(index, 0, editData);
         }
       });
+      // console.log('enetring edit data');
+      //resfresh
+      window.location.reload();
       if (!edited){
         books.push(editData);
         localStorage.setItem('books', JSON.stringify(books));
